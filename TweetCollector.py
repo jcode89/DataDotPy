@@ -1,6 +1,6 @@
 import csv
 import tweepy
-import json
+import sqlite3
 
 class TwitterAnalyzer(object):
     def __init__(self):
@@ -41,9 +41,25 @@ class TwitterAnalyzer(object):
         return tweets
         
 class StdOutListener(tweepy.StreamListener):
-    def on_data(self, data):
-        print(data)
-        return True
+    conn = sqlite3.connect('TweetData.db')
+    def on_status(self, status):
+        
+        
+        try:
+            c = self.conn.cursor()
+            #c.execute('''CREATE TABLE tweets
+                    #(created, text, user, source)''')
+            c.execute("INSERT INTO tweets VALUES(?,?,?,?)", (status.created_at,
+                                                        status.text,
+                                                        status.user.screen_name,
+                                                        status.source))
+            self.conn.commit()
+        #finally:
+            
+            #self.conn.close()
+            #print("Connection Terminated")
+        except Exception:
+            pass
         
     def on_error(self, status):
         print (status)
