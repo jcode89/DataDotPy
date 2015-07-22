@@ -4,3 +4,5 @@ This is also where different databases will be tested to see which is more effec
 
 ## TweetMiner
 A python program, ran at the command line, built to analyze data mined from Twitter.
+
+You will need to install [tweepy](https://github.com/tweepy/tweepy) to be able to run `TwitterMiner.py`
