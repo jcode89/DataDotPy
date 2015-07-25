@@ -44,11 +44,11 @@ class StdOutListener(tweepy.StreamListener):
     conn = sqlite3.connect('TweetData.db')
     def on_status(self, status):
         
-        
+        print(status)
         try:
             c = self.conn.cursor()
-            #c.execute('''CREATE TABLE tweets
-                    #(created, text, user, source)''')
+            c.execute('''CREATE TABLE IF NOT EXISTS tweets
+                    (created, text, user, source)''')
             c.execute("INSERT INTO tweets VALUES(?,?,?,?)", (status.created_at,
                                                         status.text,
                                                         status.user.screen_name,
