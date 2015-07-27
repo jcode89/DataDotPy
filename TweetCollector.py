@@ -26,7 +26,7 @@ class TwitterAnalyzer(object):
     def twitter_analytics(self):
         '''Opens, reads and prints the data from twitter analytics.
         To change what is printed you must change the strings in
-        line 36 to the names of the columns you would like to print.'''
+        line 34 to the names of the columns you would like to print.'''
         text_data = {}
         with open(self.file_name) as f:
             data = csv.DictReader(f)
