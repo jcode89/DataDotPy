@@ -1,12 +1,19 @@
+'''Run this script to gather the data already collected and prep for analysis.
+save the user: tweet information to a text file, and finally,
+analyze the data gathered and save it to the database.'''
+
 import sqlite3
 import datetime
 
+# Open the database connection and gather the data needed for later
 conn = sqlite3.connect('TweetData.db')
 c = conn.cursor()
-c.execute('''CREATE TABLE IF NOT EXISTS data(Total Tweets, Actual User, Tweet User Ratio, Date Time)''')
+c.execute('''CREATE TABLE IF NOT EXISTS data(Total Tweets,
+                                            Actual User,
+                                            Tweet User Ratio,
+                                            Date Time)''')
 fetch = c.execute("select user, text from codenewbie")
 total = 0
-open_file = open("ChatArchive.txt", 'w')
 chat_list = []
 actual_user = []
 for user, text in fetch:# unpack the tuple
@@ -14,9 +21,19 @@ for user, text in fetch:# unpack the tuple
     if user not in actual_user:
         actual_user.append(user)
     print(user, text)
-    total+=1
+    total += 1
+
+
+
+# Write the user and the tweet to a txt file.
+open_file = open("ChatArchive.txt", 'w')
 for text in chat_list:
-    open_file.write((str(text)+ "\n"+"\n"))# write each line in the list to the file using a double space for each.
+    # write each line in the list to the file using a double space for each.
+    open_file.write((str(text)+ "\n"+"\n"))
+
+
+
+# analyze the information gathered from above and save it to the database.
 user_num = len(actual_user)
 user_ratio = float(total/len(actual_user))
 time_now = datetime.datetime.now().strftime("%B, %d, %Y, %X")
@@ -30,5 +47,7 @@ print("Tweets per user: %.2f" % user_ratio)
 print(time_now)
 c.execute("INSERT INTO data VALUES(?,?,?,?)", (total, user_num, user_ratio, time_now))
 conn.commit()
+
+# close the file and database connection
 open_file.close()
 conn.close()
