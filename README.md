@@ -10,4 +10,5 @@ You will need to install [tweepy](https://github.com/tweepy/tweepy) to be able t
 **How to use:**
 * Configure `TweetCollector.py` to gather the data you want.
 * Run `TweetMiner.py`, but be sure to only run the methods you need.
-* Run `TweetWrite.py` to analyze and save the data gathered. (Never run `TweetWrite.py` and `TweetMiner.py` at the same time)
+* Import `TweetWrite.py` into a new script and instantiate `DataFilter()` to analyze and save the data gathered. (Never run `TweetWrite.py` and `TweetMiner.py` at the same time)
+  * After instatiation of `DataFilter()` you can call upon the methods needed to analyze your data as well as store the results.
