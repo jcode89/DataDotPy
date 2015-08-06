@@ -7,7 +7,7 @@ A python program, ran at the command line, built to analyze data mined from Twit
 
 You will need to install [tweepy](https://github.com/tweepy/tweepy) to be able to run both versions.
 
-If you wish to use the RethinkDB version, you must install [RethinkDB](http://rethinkdb.com/)
+If you wish to use the RethinkDB version, you must install [RethinkDB](http://rethinkdb.com/).
 
 **How to use:**
 _Applies to both versions_
