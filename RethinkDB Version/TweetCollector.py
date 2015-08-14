@@ -1,5 +1,4 @@
 '''Use this module to collect tweets from the live stream.'''
-import csv
 import tweepy
 import json
 import rethinkdb as r
