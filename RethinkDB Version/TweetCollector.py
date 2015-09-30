@@ -24,8 +24,6 @@ def database_connect():
     finally:
         conn.close()
 
-# This seems to only work outside the class.
-
 class StdOutListener(tweepy.StreamListener):
     '''Used to override the StreamListener so you can do what you want
     with the data streaming in.'''
@@ -79,5 +77,5 @@ class TweetStream(object):
         auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
         auth.set_access_token(self.access_token, self.access_token_secret)
         stream = tweepy.Stream(auth, listen)
-        stream.filter(track=[self.tag])
+        stream.filter(track=self.tag)
         print(stream)
