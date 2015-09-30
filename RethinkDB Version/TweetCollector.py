@@ -25,17 +25,27 @@ def database_connect():
         conn.close()
 
 # This seems to only work outside the class.
-conn = r.connect('localhost', 28015)
+
 class StdOutListener(tweepy.StreamListener):
     '''Used to override the StreamListener so you can do what you want
     with the data streaming in.'''
+    def __init__(self, limit):
+        self.limit = limit
+        self.num_of_tweets = 0
+        self.conn = r.connect('localhost', 28015)
     def on_data(self, data):
         '''Prints the data on screen and stores certain parts in a RethinkDB
         database.'''
         print(data)
         try:
-            tweet_data = json.loads(data)
-            r.db('test').table('chat_test_1').insert(tweet_data).run(conn)
+            self.num_of_tweets += 1
+            if self.num_of_tweets < self.limit:
+                tweet_data = json.loads(data)
+                r.db('test').table('chat_test_1').insert(tweet_data).run(self.conn)
+                return True
+            else:
+                print("Done Collecting!")
+                return False
         except Exception:
             pass
 
@@ -46,11 +56,13 @@ class StdOutListener(tweepy.StreamListener):
 class TweetStream(object):
     '''Used to access the streaming portion of the API
      that actually prints out live tweets.'''
-    def __init__(self):
+    def __init__(self, limit, tag):
         self.consumer_key = ""
         self.consumer_secret = ""
         self.access_token = ""
         self.access_token_secret = ""
+        self.rate_limit = limit
+        self.tag = tag
 
     def key_grabber(self):
         '''Grabs the keys needed for OAuth.'''
@@ -63,9 +75,9 @@ class TweetStream(object):
         '''Instantiates the listener class we created above and
         also access the stream. stream.filter(track=[]) is where,
         you tell tweepy what keywords to look for.'''
-        listen = StdOutListener()
+        listen = StdOutListener(self.rate_limit)
         auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
         auth.set_access_token(self.access_token, self.access_token_secret)
         stream = tweepy.Stream(auth, listen)
-        stream.filter(track=['BigData', 'MongoDB', 'MySQL'])
+        stream.filter(track=[self.tag])
         print(stream)
