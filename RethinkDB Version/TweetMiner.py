@@ -8,10 +8,8 @@ from TweetSifter import TwitterAnalyzer
 # Create an instance of the class you want to use
 twitter = TwitterAnalyzer()
 
-
 # Load the keys needed for OAuth
 twitter.key_grabber()
-streamer.key_grabber()
 
 # Connect and create your database and table
 connect = database_connect()
@@ -26,10 +24,12 @@ elif response == "csv":
     twitter.twitter_analytics()# prints out data from the twitter analytics csv file
 elif response == "stream":
     print("Please enter the keyword you wish to track.")
-    tag = input("> ")
+    resp = input("> ")
+    tag = resp.split()
     print("Please enter the number of tweets you would like to collect.")
     num_tweets = int(input("> "))
     streamer = TweetStream(num_tweets, tag)
+    streamer.key_grabber()
     streamer.streamer()# A live stream of tweets
 else:
     print("Oops, check your spelling!")
