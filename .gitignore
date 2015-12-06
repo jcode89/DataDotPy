@@ -1,6 +1,9 @@
 /venv
-*.txt
 *.csv
 *.db
+*.pyc
+data_py.egg-info/
+.cache/
+
 #vim
 *~
