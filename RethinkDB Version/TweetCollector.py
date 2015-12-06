@@ -6,10 +6,10 @@ from rethinkdb.errors import RqlRuntimeError
 
 # This works best outside class StdOutListener as
 # it's own function.
-def database_connect():
+def database_connect(name1):
     '''Creates the database and the table if it doesn't already exist'''
     db_name = 'test'# Enter name of your database
-    table_name = 'chat_test_1'# Enter name of your table
+    table_name = name1# name of your table
     conn = r.connect('localhost', 28015)
     try:
         try:
