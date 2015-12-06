@@ -24,3 +24,17 @@ _Applies to both versions_
   * After an instance of `DataFilter()` is set you can call upon the methods needed to analyze your data as well as store the results.
 
 If you would like to know more about the TweetMiner project, please refer to the [wiki pages](https://github.com/jcode89/DataDotPy/wiki). If you wish to contribute, please, feel free to contact [me](https://github.com/jcode89/DataDotPy/blob/master/CONTACT.md).
+
+## Tests
+
+In order to run tests for the first time you must install the module in edit mode one time.
+
+```
+pip install -e .
+```
+
+Once this is complete you can run the tests with pytest
+
+```
+py.test test
+```

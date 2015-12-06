@@ -2,5 +2,8 @@
 *.txt
 *.csv
 *.db
+*.pyc
+data_py.egg-info/
+
 #vim
 *~
