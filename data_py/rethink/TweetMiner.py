@@ -2,8 +2,8 @@
 # type that into the terminal then hit enter then
 # run your script.
 
-from TweetCollector import TweetStream, database_connect
-from TweetSifter import TwitterAnalyzer
+from data_py.rethink.TweetCollector import TweetStream, database_connect
+from data_py.rethink.TweetSifter import TwitterAnalyzer
 
 # Create an instance of the class you want to use
 twitter = TwitterAnalyzer()
