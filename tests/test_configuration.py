@@ -64,3 +64,24 @@ def test_token_secret_name_returns_env_variable(env):
     conf = env.build_configuration()
     assert "TWITTER_ACCESS_TOKEN_SECRET_RESULT" == conf.access_token_secret
 
+def test_api_key_name_can_be_overridden():
+    env = EnvironmentConfiguration(consumer_key_name="TEST")
+    conf = env.build_configuration()
+    assert "TEST_RESULT" == conf.consumer_key
+
+def test_api_secret_name_can_be_overridden():
+    env = EnvironmentConfiguration(consumer_secret_name="TEST")
+    conf = env.build_configuration()
+    assert "TEST_RESULT" == conf.consumer_secret
+
+def test_token_name_can_be_overridden():
+    env = EnvironmentConfiguration(access_token_name="TEST")
+    conf = env.build_configuration()
+    assert "TEST_RESULT" == conf.access_token
+
+def test_token_secret_name_can_be_overridden():
+    env = EnvironmentConfiguration(access_token_secret_name="TEST")
+    conf = env.build_configuration()
+    assert "TEST_RESULT" == conf.access_token_secret
+
+

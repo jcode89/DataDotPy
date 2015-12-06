@@ -18,11 +18,14 @@ class EnvironmentConfiguration:
     """
     A class that will populate your configuration from environment variables
     """
-    def __init__(self):
-        self.consumer_key_name = "TWITTER_API_KEY"
-        self.consumer_secret_name = "TWITTER_API_SECRET"
-        self.access_token_name = "TWITTER_ACCESS_TOKEN"
-        self.access_token_secret_name = "TWITTER_ACCESS_TOKEN_SECRET"
+    def __init__(self, consumer_key_name = "TWITTER_API_KEY", \
+                      consumer_secret_name="TWITTER_API_SECRET", \
+                      access_token_name = "TWITTER_ACCESS_TOKEN", \
+                      access_token_secret_name = "TWITTER_ACCESS_TOKEN_SECRET"):
+        self.consumer_key_name = consumer_key_name
+        self.consumer_secret_name = consumer_secret_name
+        self.access_token_name = access_token_name
+        self.access_token_secret_name = access_token_secret_name
 
     def build_configuration(self):
         conf = Configuration()
