@@ -1,5 +1,4 @@
 /venv
-*.txt
 *.csv
 *.db
 *.pyc
