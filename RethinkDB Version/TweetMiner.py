@@ -12,7 +12,8 @@ twitter = TwitterAnalyzer()
 twitter.key_grabber()
 
 # Connect and create your database and table
-connect = database_connect()
+connect1 = database_connect('chat_test_1')
+Connect2 = database_connect('time_test_1')
 
 print('''What would you like to do open a stream,
     work with the RESTful, or with the csv file?''')
