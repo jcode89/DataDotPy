@@ -36,5 +36,5 @@ pip install -e .
 Once this is complete you can run the tests with pytest
 
 ```
-py.test test
+python -m pytest tests
 ```

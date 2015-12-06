@@ -4,6 +4,7 @@
 *.db
 *.pyc
 data_py.egg-info/
+.cache/
 
 #vim
 *~
