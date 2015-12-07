@@ -1,15 +1,18 @@
 '''Use this module to collect tweets from the live stream.'''
 import tweepy
 import json
+import time
 import rethinkdb as r
 from rethinkdb.errors import RqlRuntimeError
+from http.client import IncompleteRead
+
 
 # This works best outside class StdOutListener as
 # it's own function.
-def database_connect():
+def database_connect(name1):
     '''Creates the database and the table if it doesn't already exist'''
     db_name = 'test'# Enter name of your database
-    table_name = 'chat_test_1'# Enter name of your table
+    table_name = name1# name of your table
     conn = r.connect('localhost', 28015)
     try:
         try:
@@ -27,23 +30,16 @@ def database_connect():
 class StdOutListener(tweepy.StreamListener):
     '''Used to override the StreamListener so you can do what you want
     with the data streaming in.'''
-    def __init__(self, limit):
-        self.limit = limit
-        self.num_of_tweets = 0
+    def __init__(self):
         self.conn = r.connect('localhost', 28015)
     def on_data(self, data):
-        '''Prints the data on screen and stores certain parts in a RethinkDB
+        '''Prints the data on screen and stores the data in a RethinkDB
         database.'''
         print(data)
         try:
-            self.num_of_tweets += 1
-            if self.num_of_tweets < self.limit:
-                tweet_data = json.loads(data)
-                r.db('test').table('chat_test_1').insert(tweet_data).run(self.conn)
-                return True
-            else:
-                print("Done Collecting!")
-                return False
+            tweet_data = json.loads(data)
+            r.db('test').table('chat_test_1').insert(tweet_data).run(self.conn)
+
         except Exception:
             pass
 
@@ -73,9 +69,23 @@ class TweetStream(object):
         '''Instantiates the listener class we created above and
         also access the stream. stream.filter(track=[]) is where,
         you tell tweepy what keywords to look for.'''
-        listen = StdOutListener(self.rate_limit)
+        listen = StdOutListener()
         auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
         auth.set_access_token(self.access_token, self.access_token_secret)
         stream = tweepy.Stream(auth, listen)
-        stream.filter(track=self.tag)
-        print(stream)
+        # This code should allow the user to stream for a specified amount of time.
+        try:
+            # May need to be tested! self.tag should be a list.
+            stream.filter(track=self.tag, async=True)
+            timeout = time.time() + self.rate_limit
+            while True:
+                if time.time() >= timeout:
+                    stream.disconnect()
+                    break
+        except IncompleteRead:
+            stream.filter(track=self.tag, async=True)
+            timeout = time.time() + self.rate_limit
+            while True:
+                if time.time() >= timeout:
+                    stream.disconnect()
+                    break

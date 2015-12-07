@@ -12,7 +12,8 @@ twitter = TwitterAnalyzer()
 twitter.key_grabber()
 
 # Connect and create your database and table
-connect = database_connect()
+connect1 = database_connect('chat_test_1')
+Connect2 = database_connect('time_test_1')
 
 print('''What would you like to do open a stream,
     work with the RESTful, or with the csv file?''')
@@ -26,11 +27,11 @@ elif response == "stream":
     print("Please enter the keyword you wish to track.")
     resp = input("> ")
     tag = resp.split()
-    print("Please enter the number of tweets you would like to collect.")
-    num_tweets = int(input("> "))
-    streamer = TweetStream(num_tweets, tag)
+    print("Please enter the amount of time in seconds you would like spend to collecting.")
+    print("3600 seconds = 1 hour")
+    amnt_of_time = int(input("> "))
+    streamer = TweetStream(amnt_of_time, tag)
     streamer.key_grabber()
     streamer.streamer()# A live stream of tweets
 else:
     print("Oops, check your spelling!")
-
