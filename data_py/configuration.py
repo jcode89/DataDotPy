@@ -15,7 +15,11 @@ class Configuration(object):
         self.access_token = ""
         self.access_token_secret = ""
 
-class EnvironmentConfiguration(object):
+class ConfigService(object):
+    def build_configuration(self):
+        raise NotImplementedError("This class defines an interface and should not be used directly")
+
+class EnvironmentConfiguration(ConfigService):
     """
     A class that will populate your configuration from environment variables
     """
