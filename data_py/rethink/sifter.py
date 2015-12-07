@@ -16,12 +16,14 @@ class TwitterAnalyzer(object):
         self.access_token = ""
         self.access_token_secret = ""
 
-    def key_grabber(self):
-        '''Used to store the keys needed for OAuth.'''
-        self.consumer_key = ""
-        self.consumer_secret = ""
-        self.access_token = ""
-        self.access_token_secret = ""
+    def key_grabber(self, configuration_service):
+        '''Used to set the configuration'''
+        self.configuration_service = configuration_service
+        conf = self.configuration_service.build_configuration()
+        self.consumer_key = conf.consumer_key
+        self.consumer_secret = conf.consumer_secret
+        self.access_token = conf.access_token
+        self.access_token_secret = conf.access_token_secret
 
     def twitter_analytics(self):
         '''Opens, reads and prints the data from twitter analytics.

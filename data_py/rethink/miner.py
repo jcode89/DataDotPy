@@ -2,14 +2,18 @@
 # type that into the terminal then hit enter then
 # run your script.
 
-from data_py.rethink.TweetCollector import TweetStream, database_connect
-from data_py.rethink.TweetSifter import TwitterAnalyzer
+from data_py.rethink.collector import TweetStream, database_connect
+from data_py.rethink.sifter import TwitterAnalyzer
+from data_py.configuration import EnvironmentConfiguration
 
 # Create an instance of the class you want to use
 twitter = TwitterAnalyzer()
 
+# Configure
+config = EnvironmentConfiguration()
+
 # Load the keys needed for OAuth
-twitter.key_grabber()
+twitter.key_grabber(config)
 
 # Connect and create your database and table
 connect1 = database_connect('chat_test_1')
@@ -31,7 +35,7 @@ elif response == "stream":
     print("3600 seconds = 1 hour")
     amnt_of_time = int(input("> "))
     streamer = TweetStream(amnt_of_time, tag)
-    streamer.key_grabber()
+    streamer.key_grabber(config)
     streamer.streamer()# A live stream of tweets
 else:
     print("Oops, check your spelling!")
