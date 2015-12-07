@@ -1,7 +1,7 @@
 import pytest
 
 
-from tests.helper import *
+from helper import *
 from data_py.rethink.collector import *
 
 

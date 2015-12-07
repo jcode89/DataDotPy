@@ -1,18 +1,9 @@
 import pytest
 
-
+from helper import *
 from data_py.configuration import ConfigService, Configuration
 from data_py.sqlite.collector import *
 
-
-class TestConfig(ConfigService):
-    def build_configuration(self):
-        conf = Configuration()
-        conf.consumer_key = "aa"
-        conf.consumer_secret = "bb"
-        conf.access_token = "cc"
-        conf.access_token_secret = "dd"
-        return conf
 
 def test_analyzer_key_grabber_takes_configuration():
     conf = TestConfig()
