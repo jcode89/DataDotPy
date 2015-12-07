@@ -27,11 +27,11 @@ elif response == "stream":
     print("Please enter the keyword you wish to track.")
     resp = input("> ")
     tag = resp.split()
-    print("Please enter the number of tweets you would like to collect.")
-    num_tweets = int(input("> "))
-    streamer = TweetStream(num_tweets, tag)
+    print("Please enter the amount of time in seconds you would like spend to collecting.")
+    print("3600 seconds = 1 hour")
+    amnt_of_time = int(input("> "))
+    streamer = TweetStream(amnt_of_time, tag)
     streamer.key_grabber()
     streamer.streamer()# A live stream of tweets
 else:
     print("Oops, check your spelling!")
-
