@@ -4,7 +4,7 @@ import json
 import time
 import rethinkdb as r
 from rethinkdb.errors import RqlRuntimeError
-from http.client import IncompleteRead
+from httplib import IncompleteRead
 
 
 # This works best outside class StdOutListener as

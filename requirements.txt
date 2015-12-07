@@ -1,3 +1,4 @@
+httplib==2.5.3
 oauthlib==1.0.3
 py==1.4.31
 pytest==2.8.3
