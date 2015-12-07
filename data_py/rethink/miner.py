@@ -2,14 +2,18 @@
 # type that into the terminal then hit enter then
 # run your script.
 
-from data_py.rethink.TweetCollector import TweetStream, database_connect
-from data_py.rethink.TweetSifter import TwitterAnalyzer
+from data_py.rethink.collector import TweetStream, database_connect
+from data_py.rethink.sifter import TwitterAnalyzer
+from data_py.configuration import EnvironmentConfiguration
 
 # Create an instance of the class you want to use
 twitter = TwitterAnalyzer()
 
+# Configure
+config = EnvironmentConfiguration()
+
 # Load the keys needed for OAuth
-twitter.key_grabber()
+twitter.key_grabber(config)
 
 # Connect and create your database and table
 connect = database_connect()
@@ -29,7 +33,7 @@ elif response == "stream":
     print("Please enter the number of tweets you would like to collect.")
     num_tweets = int(input("> "))
     streamer = TweetStream(num_tweets, tag)
-    streamer.key_grabber()
+    streamer.key_grabber(config)
     streamer.streamer()# A live stream of tweets
 else:
     print("Oops, check your spelling!")
