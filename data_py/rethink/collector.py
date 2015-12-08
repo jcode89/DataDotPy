@@ -4,7 +4,7 @@ import json
 import time
 import rethinkdb as r
 from rethinkdb.errors import RqlRuntimeError
-from httplib import IncompleteRead
+from urllib3.connection import HTTPException
 
 
 # This works best outside class StdOutListener as
@@ -84,7 +84,8 @@ class TweetStream(object):
                 if time.time() >= timeout:
                     stream.disconnect()
                     break
-        except IncompleteRead:
+        except HTTPException as e:
+            # This includes IncompleteRead.
             stream.filter(track=self.tag, async=True)
             timeout = time.time() + self.rate_limit
             while True:
