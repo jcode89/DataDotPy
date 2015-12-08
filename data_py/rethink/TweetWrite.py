@@ -20,7 +20,10 @@ class DataFilter(object):
         self.chat_list = []
         self.actual_user = []
         self.user_locations = []
-        for document in fetch:
+        self.retweets = []
+        self.favorites = []
+        self.doc_check =[]
+        for document in self.fetch:
             self.data.append(document)
             self.chat_list.append((document['user']['screen_name'],
                                     document['text'], document['user']['location']))
@@ -28,6 +31,14 @@ class DataFilter(object):
                 self.actual_user.append(document['user']['screen_name'])
             if document['user']['location'] not in self.user_locations:
                 self.user_locations.append(document['user']['location'])
+            if 'retweeted_status' in document:
+                self.retweets.append((document['retweeted_status']['user']['screen_name'],
+                                     document['retweeted_status']['text'],
+                                     document['retweeted_status']['retweet_count']))
+
+                self.favorites.append((document['retweeted_status']['user']['screen_name'],
+                                    document['retweeted_status']['text'],
+                                    document['retweeted_status']['favorite_count']))
             self.total+=1
 
     def write_to_file(self):
@@ -51,10 +62,53 @@ class DataFilter(object):
         print("Number of actual users: %d" % self.user_num)
         # Tweets per user, or Tweets:user
         print("Tweets per user: %.2f" % self.user_ratio)
-        # Prints exact time programs was run, including the date.
-        print(self.time_now)
         # The locations are saved in a list, because more may be done with them later
         print("Locations: ", len(self.user_locations))
+        # The amount of original tweets
+        print("Original Tweets: %d" % (self.total - len(self.retweets)))
+        # The amount of Retweets.
+        print("Retweets: %d" % len(self.retweets))
+        # The amount of favorites.
+        print("Favorites count: %d" % len(self.favorites))
+        # This section of code finds the highest retweet count so the user can see
+        # How many times a tweet was retweeted.
+        empty_var = 0
+        for text_num in self.retweets:
+            # Checks the current number of rewteets against the number that
+            # was just checked before.
+            if text_num[2] > empty_var:
+                # We accomplish this by saving the greater of the two numbers in
+                # the empty variable and checking the numbers over until we find
+                # the larger one.
+                empty_var = text_num[2]
+                highest_rt = text_num
+        print("Most retweeted tweet: ", highest_rt)
+
+        empty_fav = 0
+        for fav_num in self.favorites:
+            if fav_num[2] > empty_fav:
+                empty_fav = fav_num[2]
+                highest_fav = fav_num
+        print("Most favorited Tweet: ", highest_fav)
+        # Prints exact time programs was run, including the date.
+        print(self.time_now)
+
+        # stores the data in a new table in the database.
+        # You should make sure you create the table and db using the database_connect
+        # function.
+        try:
+            r.db('tweet_test').table_create('tweet_results').run(self.conn)
+            r.db('tweet_test').table('tweet_results').insert({'users': self.user_num,
+                                                        'users_ratio': self.user_ratio,
+                                                        'Locations': self.user_locations,
+                                                        'Retweets': self.retweets,
+                                                        'Time': self.time_now}).run(self.conn)
+        except:
+            r.db('tweet_test').table('tweet_results').insert({'users': self.user_num,
+                                                        'users_ratio': self.user_ratio,
+                                                        'Locations': self.user_locations,
+                                                        'Retweets': self.retweets,
+                                                        'Time': self.time_now}).run(self.conn)
 
     def close_the_database(self):
         '''Close the open file and close the connection to the database.'''
