@@ -4,7 +4,7 @@ import json
 import time
 import rethinkdb as r
 from rethinkdb.errors import RqlRuntimeError
-from http.client import IncompleteRead
+from urllib3.connection import HTTPException
 
 
 # This works best outside class StdOutListener as
@@ -58,12 +58,14 @@ class TweetStream(object):
         self.rate_limit = limit
         self.tag = tag
 
-    def key_grabber(self):
-        '''Grabs the keys needed for OAuth.'''
-        self.consumer_key = ""
-        self.consumer_secret = ""
-        self.access_token = ""
-        self.access_token_secret = ""
+    def key_grabber(self, configuration_service):
+        '''Used to set the configuration'''
+        self.configuration_service = configuration_service
+        conf = self.configuration_service.build_configuration()
+        self.consumer_key = conf.consumer_key
+        self.consumer_secret = conf.consumer_secret
+        self.access_token = conf.access_token
+        self.access_token_secret = conf.access_token_secret
 
     def streamer(self):
         '''Instantiates the listener class we created above and
@@ -82,7 +84,8 @@ class TweetStream(object):
                 if time.time() >= timeout:
                     stream.disconnect()
                     break
-        except IncompleteRead:
+        except HTTPException as e:
+            # This includes IncompleteRead.
             stream.filter(track=self.tag, async=True)
             timeout = time.time() + self.rate_limit
             while True:

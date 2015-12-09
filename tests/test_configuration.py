@@ -4,7 +4,7 @@ import data_py.configuration
 from data_py.configuration import *
 
 """
-Test the Configutation class
+Test the Configuration class
 """
 @pytest.fixture
 def config():
@@ -23,7 +23,20 @@ def test_config_has_access_token_secret(config):
     assert "" == config.access_token_secret
 
 """
-Test the EnvironmentConfigutation class
+Test the ConfigService class
+"""
+def test_build_configuration_throws_not_implemented_error():
+    subject = ConfigService()
+
+    try:
+        subject.build_configuration()
+    except NotImplementedError as e:
+        assert e.args[0] == "This class defines an interface and should not be used directly"
+    else:
+        assert False, "Expected a NotImplementedError"
+
+"""
+Test the EnvironmentConfiguration class
 """
 @pytest.fixture(autouse=True)
 def no_requests(monkeypatch):
@@ -74,6 +87,9 @@ def test_api_secret_name_can_be_overridden():
     conf = env.build_configuration()
     assert "TEST_RESULT" == conf.consumer_secret
 
+def test_is_instance_of_config_service():
+    env = EnvironmentConfiguration()
+    assert isinstance(env, ConfigService)
 def test_token_name_can_be_overridden():
     env = EnvironmentConfiguration(access_token_name="TEST")
     conf = env.build_configuration()
