@@ -15,6 +15,17 @@ def analyze_tweets():
     twitter = TwitterAnalyzer()
     twitter.twitter_analytics()# prints out data from the twitter analytics csv
 
+def print_text(tweet):
+    print(tweet.text)
+
+def show_tweets(search):
+    env_config = EnvironmentConfiguration()
+    listener = SqliteListener()
+    twitter = TwitterClient()
+    config = env_config.build_configuration()
+    twitter.authenticate(config)
+    twitter.search(print_text, q=search)
+
 def stream_tweets():
     """ Streams a live stream of tweets """
     env_config = EnvironmentConfiguration()
