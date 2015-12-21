@@ -1,5 +1,5 @@
 #! /usr/bin/env python
 
-from data_py.sqlite.miner import analyze_tweets
+from data_py.sqlite.miner import *
 
-analyze_tweets()
+show_tweets("CodeNewbie")
