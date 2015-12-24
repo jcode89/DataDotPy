@@ -10,10 +10,6 @@ from data_py.sqlite.collector import TwitterAnalyzer
 from data_py.configuration import EnvironmentConfiguration
 from data_py.twitter_client import TwitterClient, SqliteListener
 
-def analyze_tweets():
-    """ Performs tweet analytics """
-    twitter = TwitterAnalyzer()
-    twitter.twitter_analytics()# prints out data from the twitter analytics csv
 
 def print_text(tweet):
     print(tweet.text)
