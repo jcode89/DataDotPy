@@ -1,5 +1,6 @@
 """ This module contains the client that talks to Twitter """
 import tweepy
+import twitter
 import sqlite3
 
 def cursor(api, **kwargs):
@@ -17,20 +18,36 @@ class TwitterClient(object):
         self.authenticated = False
         self.api = None
         self.rate_limit = 500
+        self.tweepy_mode = True
 
-    def authenticate(self, config, json=False):
-        """ Authenticates the user with Twitter """
+    def authenticate_with_tweepy(self, config):
+        """ Authenticates the user with Tweepy """
         self.auth = tweepy.OAuthHandler(config.consumer_key, \
                                         config.consumer_secret)
         self.auth.set_access_token(config.access_token, \
                                    config.access_token_secret)
-        if json:
-            self.api = tweepy.API(self.auth, \
-                                  parser=tweepy.parsers.JSONParser())
-        else:
-            self.api = tweepy.API(self.auth)
+        self.api = tweepy.API(self.auth)
 
+        self.tweepy_mode = True
         self.authenticated = True
+
+    def authenticate_with_twitter(self, config):
+        """ Authenticates the user with Twitter """
+        self.auth = twitter.OAuth(config.access_token, \
+                                  config.access_token_secret, \
+                                  config.consumer_key, \
+                                  config.consumer_secret)
+
+        self.tweepy_mode = False
+        self.api = twitter.Twitter(auth=self.auth)
+        self.authenticated = True
+
+    def authenticate(self, config, json=False):
+        """ Authenticates the user with Twitter """
+        if json:
+            self.authenticate_with_twitter(config)
+        else:
+            self.authenticate_with_tweepy(config)
 
     def search(self, tweet_callback, **kwargs):
         """ Performs a search using the arguments specified in kwargs
@@ -40,7 +57,11 @@ class TwitterClient(object):
                                be called for each tweet returned
             * kwargs         - The twitter API query parameters
         """
-        tweets = cursor(self.api, **kwargs)
+        if self.tweepy_mode:
+            tweets = cursor(self.api, **kwargs)
+        else:
+            results = self.api.search.tweets(**kwargs)
+            tweets = results['statuses']
 
         for tweet in tweets:
             tweet_callback(tweet)
