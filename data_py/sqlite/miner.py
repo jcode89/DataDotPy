@@ -6,7 +6,6 @@ This module uses a sqlite backend to analyze and stream tweets
 # run your script.
 """
 
-from data_py.sqlite.collector import TwitterAnalyzer
 from data_py.configuration import EnvironmentConfiguration
 from data_py.twitter_client import TwitterClient, SqliteListener
 

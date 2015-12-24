@@ -7,7 +7,7 @@ def cursor(api, **kwargs):
     return tweepy.Cursor(api.search, **kwargs).items(1000)
 
 def stream(auth, listener):
-    return tweepy.Stream(auth, listen)
+    return tweepy.Stream(auth, listener)
 
 class TwitterClient(object):
     """ This class wraps the Tweepy API """
@@ -16,6 +16,7 @@ class TwitterClient(object):
         """ Initialize the instance """
         self.authenticated = False
         self.api = None
+        self.rate_limit = 500
 
     def authenticate(self, config, json=False):
         """ Authenticates the user with Twitter """
@@ -53,6 +54,30 @@ class TwitterClient(object):
         result.filter(track=filter_list)
         print(result)
 
+    def stream_adv(self, listener, filter_list):
+        ## version of the streamer from rethink. TODO merge with stream()
+        '''Instantiates the listener class we created above and
+        also access the stream. stream.filter(track=[]) is where,
+        you tell tweepy what keywords to look for.'''
+        result = stream(self.auth, listener)
+        # This code should allow the user to stream for a specified amount of time.
+        try:
+            # May need to be tested! self.tag should be a list.
+            result.filter(track=filter_list, async=True)
+            timeout = time.time() + self.rate_limit
+            while True:
+                if time.time() >= timeout:
+                    result.disconnect()
+                    break
+        except HTTPException as e:
+            # This includes IncompleteRead.
+            result.filter(track=filter_list, async=True)
+            timeout = time.time() + self.rate_limit
+            while True:
+                if time.time() >= timeout:
+                    result.disconnect()
+                    break
+
 class SqliteListener(tweepy.StreamListener):
     '''Used to override the StreamListener so you can do what you want
     with the data streaming in.'''
@@ -79,4 +104,55 @@ class SqliteListener(tweepy.StreamListener):
     def on_error(self, status):
         '''prints out any errors that come from the listener.'''
         print (status)
+
+### rethink collector
+
+'''Use this module to collect tweets from the live stream.'''
+import tweepy
+import json
+import time
+import rethinkdb as r
+from rethinkdb.errors import RqlRuntimeError
+from urllib3.connection import HTTPException
+
+class RethinkListener(tweepy.StreamListener):
+    '''Used to override the StreamListener so you can do what you want
+    with the data streaming in.'''
+    def __init__(self):
+        self.conn = r.connect('localhost', 28015)
+    def on_data(self, data):
+        '''Prints the data on screen and stores the data in a RethinkDB
+        database.'''
+        print(data)
+        try:
+            tweet_data = json.loads(data)
+            r.db('test').table('chat_test_1').insert(tweet_data).run(self.conn)
+
+        except Exception:
+            pass
+
+    def on_error(self, status):
+        '''prints out any errors that come from the listener.'''
+        print (status)
+
+
+# This works best outside class StdOutListener as
+# it's own function.
+def database_connect(name1):
+    '''Creates the database and the table if it doesn't already exist'''
+    db_name = 'test'# Enter name of your database
+    table_name = name1# name of your table
+    conn = r.connect('localhost', 28015)
+    try:
+        try:
+            r.db_create(db_name).run(conn)
+            r.db(db_name).table_create(table_name).run(conn)
+            print("Database setup completed!")
+        except RqlRuntimeError:
+            r.db(db_name).table_create(table_name).run(conn)
+            print("Database already exists!")
+    except:
+        print("Database and table exist!")
+    finally:
+        conn.close()
 

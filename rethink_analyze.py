@@ -1,5 +1,5 @@
 #! /usr/bin/env python
 
-from data_py.rethink.miner import analyze_tweets
+from data_py.rethink.miner import stream_tweets
 
-analyze_tweets()
+stream_tweets()
