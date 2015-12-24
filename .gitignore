@@ -5,5 +5,8 @@
 data_py.egg-info/
 .cache/
 
+# Coverage
+.coverage
+
 #vim
 *~

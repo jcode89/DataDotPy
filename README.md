@@ -40,3 +40,11 @@ Once this is complete you can run the tests with pytest
 ```
 python -m pytest tests
 ```
+### Test Coverage
+
+Test coverge uses the pytest-cov module and can be run using the following command
+
+```
+python -m pytest --cov-report term-missing --cov=data_py
+
+```
