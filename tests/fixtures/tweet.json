@@ -1,1 +1,245 @@
-[{"metadata": {"iso_language_code": "en", "result_type": "recent"}, "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>", "in_reply_to_status_id": null, "retweeted": false, "in_reply_to_screen_name": null, "in_reply_to_status_id_str": null, "is_quote_status": false, "contributors": null, "coordinates": null, "geo": null, "in_reply_to_user_id": null, "in_reply_to_user_id_str": null, "created_at": "Thu Dec 24 17:51:09 +0000 2015", "entities": {"urls": [{"expanded_url": "http://www.codenewbie.org/blogs/what-i-look-for-in-a-junior-developer", "indices": [75, 98], "url": "https://t.co/HBTqfPv20r", "display_url": "codenewbie.org/blogs/what-i-l\u2026"}], "symbols": [], "hashtags": [{"text": "CodeNewbie", "indices": [99, 110]}], "user_mentions": [{"name": "Craig Dennis", "indices": [3, 16], "id": 2725634174, "id_str": "2725634174", "screen_name": "craigsdennis"}, {"name": "CodeNewbie", "indices": [61, 73], "id": 2398551432, "id_str": "2398551432", "screen_name": "CodeNewbies"}]}, "id_str": "680083303374835712", "lang": "en", "possibly_sensitive": false, "place": null, "favorite_count": 0, "favorited": false, "id": 680083303374835712, "text": "RT @craigsdennis: 'What I look for in a junior developer' by @CodeNewbies: https://t.co/HBTqfPv20r #CodeNewbie", "user": {"protected": false, "following": false, "default_profile_image": false, "is_translator": false, "contributors_enabled": false, "verified": false, "favourites_count": 2047, "profile_use_background_image": true, "screen_name": "Just_Janes", "follow_request_sent": false, "friends_count": 452, "is_translation_enabled": false, "profile_sidebar_border_color": "C0DEED", "default_profile": true, "time_zone": null, "geo_enabled": false, "profile_sidebar_fill_color": "DDEEF6", "name": "Justin Janes", "profile_link_color": "0084B4", "notifications": false, "has_extended_profile": false, "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png", "profile_text_color": "333333", "lang": "en", "created_at": "Thu Jul 25 00:45:27 +0000 2013", "entities": {"description": {"urls": []}}, "url": null, "listed_count": 3, "utc_offset": null, "profile_banner_url": "https://pbs.twimg.com/profile_banners/1618994467/1403985409", "id": 1618994467, "profile_background_color": "C0DEED", "profile_image_url": "http://pbs.twimg.com/profile_images/482975928918634496/rDj9IXS7_normal.jpeg", "followers_count": 57, "location": "", "profile_background_tile": false, "statuses_count": 597, "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png", "profile_image_url_https": "https://pbs.twimg.com/profile_images/482975928918634496/rDj9IXS7_normal.jpeg", "description": "", "id_str": "1618994467"}, "truncated": false, "retweeted_status": {"metadata": {"iso_language_code": "en", "result_type": "recent"}, "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>", "in_reply_to_status_id": null, "retweeted": false, "in_reply_to_screen_name": null, "in_reply_to_status_id_str": null, "is_quote_status": false, "contributors": null, "geo": null, "in_reply_to_user_id": null, "in_reply_to_user_id_str": null, "created_at": "Thu Dec 24 16:34:31 +0000 2015", "entities": {"urls": [{"expanded_url": "http://www.codenewbie.org/blogs/what-i-look-for-in-a-junior-developer", "indices": [57, 80], "url": "https://t.co/HBTqfPv20r", "display_url": "codenewbie.org/blogs/what-i-l\u2026"}], "symbols": [], "hashtags": [{"text": "CodeNewbie", "indices": [81, 92]}], "user_mentions": [{"name": "CodeNewbie", "indices": [43, 55], "id": 2398551432, "id_str": "2398551432", "screen_name": "CodeNewbies"}]}, "id_str": "680064019202363392", "lang": "en", "possibly_sensitive": false, "place": null, "favorite_count": 4, "favorited": false, "id": 680064019202363392, "text": "'What I look for in a junior developer' by @CodeNewbies: https://t.co/HBTqfPv20r #CodeNewbie", "user": {"protected": false, "following": false, "default_profile_image": false, "is_translator": false, "contributors_enabled": false, "verified": false, "favourites_count": 3402, "profile_use_background_image": false, "screen_name": "craigsdennis", "follow_request_sent": false, "friends_count": 1272, "is_translation_enabled": false, "profile_sidebar_border_color": "000000", "default_profile": false, "time_zone": null, "geo_enabled": true, "profile_sidebar_fill_color": "000000", "name": "Craig Dennis", "profile_link_color": "94D487", "notifications": false, "has_extended_profile": false, "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png", "profile_text_color": "000000", "lang": "en", "created_at": "Tue Aug 12 07:27:48 +0000 2014", "entities": {"description": {"urls": []}, "url": {"urls": [{"expanded_url": "https://teamtreehouse.com/craigsdennis", "indices": [0, 23], "url": "https://t.co/j4JDwtQ1vF", "display_url": "teamtreehouse.com/craigsdennis"}]}}, "url": "https://t.co/j4JDwtQ1vF", "listed_count": 53, "utc_offset": null, "profile_banner_url": "https://pbs.twimg.com/profile_banners/2725634174/1407829148", "id": 2725634174, "profile_background_color": "000000", "profile_image_url": "http://pbs.twimg.com/profile_images/499096161592946688/TrYvRVnc_normal.jpeg", "followers_count": 1260, "location": "Portland, OR", "profile_background_tile": false, "statuses_count": 1338, "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png", "profile_image_url_https": "https://pbs.twimg.com/profile_images/499096161592946688/TrYvRVnc_normal.jpeg", "description": "Teacher @treehouse", "id_str": "2725634174"}, "truncated": false, "coordinates": null, "retweet_count": 2}, "retweet_count": 2}]
+[
+  {
+    "metadata": {
+      "iso_language_code": "en",
+      "result_type": "recent"
+    },
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "in_reply_to_status_id": null,
+    "retweeted": false,
+    "in_reply_to_screen_name": null,
+    "in_reply_to_status_id_str": null,
+    "is_quote_status": false,
+    "contributors": null,
+    "coordinates": null,
+    "geo": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "created_at": "Thu Dec 24 17:51:09 +0000 2015",
+    "entities": {
+      "urls": [
+        {
+          "expanded_url": "http://www.codenewbie.org/blogs/what-i-look-for-in-a-junior-developer",
+          "indices": [
+            75,
+            98
+          ],
+          "url": "https://t.co/HBTqfPv20r",
+          "display_url": "codenewbie.org/blogs/what-i-l…"
+        }
+      ],
+      "symbols": [],
+      "hashtags": [
+        {
+          "text": "CodeNewbie",
+          "indices": [
+            99,
+            110
+          ]
+        }
+      ],
+      "user_mentions": [
+        {
+          "name": "Craig Dennis",
+          "indices": [
+            3,
+            16
+          ],
+          "id": 2725634174,
+          "id_str": "2725634174",
+          "screen_name": "craigsdennis"
+        },
+        {
+          "name": "CodeNewbie",
+          "indices": [
+            61,
+            73
+          ],
+          "id": 2398551432,
+          "id_str": "2398551432",
+          "screen_name": "CodeNewbies"
+        }
+      ]
+    },
+    "id_str": "2345678901",
+    "lang": "en",
+    "possibly_sensitive": false,
+    "place": null,
+    "favorite_count": 1,
+    "favorited": true,
+    "id": 2345678901,
+    "text": "Tweet text",
+    "user": {
+      "protected": false,
+      "following": false,
+      "default_profile_image": false,
+      "is_translator": false,
+      "contributors_enabled": false,
+      "verified": false,
+      "favourites_count": 2047,
+      "profile_use_background_image": true,
+      "screen_name": "Just_Janes",
+      "follow_request_sent": false,
+      "friends_count": 452,
+      "is_translation_enabled": false,
+      "profile_sidebar_border_color": "C0DEED",
+      "default_profile": true,
+      "time_zone": null,
+      "geo_enabled": false,
+      "profile_sidebar_fill_color": "DDEEF6",
+      "name": "Justin Janes",
+      "profile_link_color": "0084B4",
+      "notifications": false,
+      "has_extended_profile": false,
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_text_color": "333333",
+      "lang": "en",
+      "created_at": "Thu Jul 25 00:45:27 +0000 2013",
+      "entities": {
+        "description": {
+          "urls": []
+        }
+      },
+      "url": null,
+      "listed_count": 3,
+      "utc_offset": null,
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/1618994467/1403985409",
+      "id": 1234567890,
+      "profile_background_color": "C0DEED",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/482975928918634496/rDj9IXS7_normal.jpeg",
+      "followers_count": 57,
+      "location": "The moon",
+      "profile_background_tile": false,
+      "statuses_count": 597,
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/482975928918634496/rDj9IXS7_normal.jpeg",
+      "description": "",
+      "id_str": "1618994467"
+    },
+    "truncated": false,
+    "retweeted_status": {
+      "metadata": {
+        "iso_language_code": "en",
+        "result_type": "recent"
+      },
+      "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+      "in_reply_to_status_id": null,
+      "retweeted": false,
+      "in_reply_to_screen_name": null,
+      "in_reply_to_status_id_str": null,
+      "is_quote_status": false,
+      "contributors": null,
+      "geo": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "created_at": "Thu Dec 24 16:34:31 +0000 2015",
+      "entities": {
+        "urls": [
+          {
+            "expanded_url": "http://www.codenewbie.org/blogs/what-i-look-for-in-a-junior-developer",
+            "indices": [
+              57,
+              80
+            ],
+            "url": "https://t.co/HBTqfPv20r",
+            "display_url": "codenewbie.org/blogs/what-i-l…"
+          }
+        ],
+        "symbols": [],
+        "hashtags": [
+          {
+            "text": "CodeNewbie",
+            "indices": [
+              81,
+              92
+            ]
+          }
+        ],
+        "user_mentions": [
+          {
+            "name": "CodeNewbie",
+            "indices": [
+              43,
+              55
+            ],
+            "id": 2398551432,
+            "id_str": "2398551432",
+            "screen_name": "CodeNewbies"
+          }
+        ]
+      },
+      "id_str": "680064019202363392",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "place": null,
+      "favorite_count": 1,
+      "favorited": false,
+      "id": 680064019202363400,
+      "text": "'What I look for in a junior developer' by @CodeNewbies: https://t.co/HBTqfPv20r #CodeNewbie",
+      "user": {
+        "protected": false,
+        "following": false,
+        "default_profile_image": false,
+        "is_translator": false,
+        "contributors_enabled": false,
+        "verified": false,
+        "favourites_count": 3402,
+        "profile_use_background_image": false,
+        "screen_name": "craigsdennis",
+        "follow_request_sent": false,
+        "friends_count": 1272,
+        "is_translation_enabled": false,
+        "profile_sidebar_border_color": "000000",
+        "default_profile": false,
+        "time_zone": null,
+        "geo_enabled": true,
+        "profile_sidebar_fill_color": "000000",
+        "name": "Craig Dennis",
+        "profile_link_color": "94D487",
+        "notifications": false,
+        "has_extended_profile": false,
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_text_color": "000000",
+        "lang": "en",
+        "created_at": "Tue Aug 12 07:27:48 +0000 2014",
+        "entities": {
+          "description": {
+            "urls": []
+          },
+          "url": {
+            "urls": [
+              {
+                "expanded_url": "https://teamtreehouse.com/craigsdennis",
+                "indices": [
+                  0,
+                  23
+                ],
+                "url": "https://t.co/j4JDwtQ1vF",
+                "display_url": "teamtreehouse.com/craigsdennis"
+              }
+            ]
+          }
+        },
+        "url": "https://t.co/j4JDwtQ1vF",
+        "listed_count": 53,
+        "utc_offset": null,
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/2725634174/1407829148",
+        "id": 2725634174,
+        "profile_background_color": "000000",
+        "profile_image_url": "http://pbs.twimg.com/profile_images/499096161592946688/TrYvRVnc_normal.jpeg",
+        "followers_count": 1260,
+        "location": "Portland, OR",
+        "profile_background_tile": false,
+        "statuses_count": 1338,
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/499096161592946688/TrYvRVnc_normal.jpeg",
+        "description": "Teacher @treehouse",
+        "id_str": "2725634174"
+      },
+      "truncated": false,
+      "coordinates": null,
+      "retweet_count": 2
+    },
+    "retweet_count": 2
+  }
+]
