@@ -2,6 +2,7 @@ oauthlib==1.0.3
 py==1.4.31
 pytest==2.8.3
 pytest-cov==2.2.0
+pytz==2015.7
 requests==2.8.1
 requests-oauthlib==0.5.0
 rethinkdb==2.2.0.post1
