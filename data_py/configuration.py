@@ -40,4 +40,3 @@ class EnvironmentConfiguration(ConfigService):
         conf.access_token = environ(self.access_token_name)
         conf.access_token_secret = environ(self.access_token_secret_name)
         return conf
-
