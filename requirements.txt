@@ -1,3 +1,5 @@
+coverage==4.0.3
+-e git+https://github.com/jcode89/DataDotPy.git@664703f1c7c7d00e65e9214aa868e9dc6c32d2bb#egg=data_py-jc-progress-bar
 oauthlib==1.0.3
 py==1.4.31
 pytest==2.8.3
@@ -7,6 +9,7 @@ requests==2.8.1
 requests-oauthlib==0.5.0
 rethinkdb==2.2.0.post1
 six==1.10.0
+tqdm==3.4.0
 tweepy==3.5.0
 twitter==1.17.1
 urllib3==1.12
