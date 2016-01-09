@@ -2,6 +2,7 @@
 import tweepy
 import twitter
 import sqlite3
+from tqdm import tqdm
 
 def cursor(api, **kwargs):
     """ Wraps the tweepy Cursor call to make this generic """
@@ -72,8 +73,32 @@ class TwitterClient(object):
             * filter_list - List of terms to filter
         """
         result = stream(self.auth, listener)
-        result.filter(track=filter_list)
-        print(result)
+        # Adds the funcitonality to stream for a specified amount of time.
+        try:
+            # May need to be tested! self.tag should be a list.
+            result.filter(track=filter_list, async=True)
+            timeout = time.time() + self.rate_limit
+            # Allows a progress bar to be displayed
+            with tqdm(total=self.rate_limit) as probar:
+                while True:
+                    for seconds in range(self.rate_limit):
+                        probar.update(1)
+                        time.sleep(1)
+                    if time.time() >= timeout:
+                        result.disconnect()
+                        break
+        except HTTPException as e:
+            # This includes IncompleteRead.
+            result.filter(track=filter_list, async=True)
+            timeout = time.time() + self.rate_limit
+            with tqdm(total=self.rate_limit) as probar:
+                while True:
+                    for seconds in range(self.rate_limit):
+                        probar.update(1)
+                        time.sleep(1)
+                    if time.time() >= timeout:
+                        result.disconnect()
+                        break
 
     def stream_adv(self, listener, filter_list):
         ## version of the streamer from rethink. TODO merge with stream()
@@ -86,18 +111,27 @@ class TwitterClient(object):
             # May need to be tested! self.tag should be a list.
             result.filter(track=filter_list, async=True)
             timeout = time.time() + self.rate_limit
-            while True:
-                if time.time() >= timeout:
-                    result.disconnect()
-                    break
+            # Allows a progress bar to be displayed
+            with tqdm(total=self.rate_limit) as probar:
+                while True:
+                    for seconds in range(self.rate_limit):
+                        probar.update(1)
+                        time.sleep(1)
+                    if time.time() >= timeout:
+                        result.disconnect()
+                        break
         except HTTPException as e:
             # This includes IncompleteRead.
             result.filter(track=filter_list, async=True)
             timeout = time.time() + self.rate_limit
-            while True:
-                if time.time() >= timeout:
-                    result.disconnect()
-                    break
+            with tqdm(total=self.rate_limit) as probar:
+                while True:
+                    for seconds in range(self.rate_limit):
+                        probar.update(1)
+                        time.sleep(1)
+                    if time.time() >= timeout:
+                        result.disconnect()
+                        break
 
 class SqliteListener(tweepy.StreamListener):
     '''Used to override the StreamListener so you can do what you want
@@ -144,7 +178,6 @@ class RethinkListener(tweepy.StreamListener):
     def on_data(self, data):
         '''Prints the data on screen and stores the data in a RethinkDB
         database.'''
-        print(data)
         try:
             tweet_data = json.loads(data)
             r.db('test').table('chat_test_1').insert(tweet_data).run(self.conn)
@@ -176,4 +209,3 @@ def database_connect(name1):
         print("Database and table exist!")
     finally:
         conn.close()
-
