@@ -1,4 +1,4 @@
-oauthlib==1.0.3
+coverage==4.0.3
 py==1.4.31
 pytest==2.8.3
 pytest-cov==2.2.0
@@ -7,6 +7,7 @@ requests==2.8.1
 requests-oauthlib==0.5.0
 rethinkdb==2.2.0.post1
 six==1.10.0
+tqdm==3.4.0
 tweepy==3.5.0
 twitter==1.17.1
 urllib3==1.12

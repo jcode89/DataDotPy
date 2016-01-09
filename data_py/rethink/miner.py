@@ -9,7 +9,7 @@ def stream_tweets():
     # Configure
     env_config = EnvironmentConfiguration()
     config = env_config.build_configuration()
-
+    
     # Connect and create your database and table
     connect1 = database_connect('chat_test_1')
     Connect2 = database_connect('time_test_1')
@@ -21,6 +21,3 @@ def stream_tweets():
 
     filter_list = ['BigData', 'MongoDB', 'MySql']
     twitter.stream_adv(listener, filter_list)
-
-
-
